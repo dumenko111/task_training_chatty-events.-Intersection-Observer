@@ -55,11 +55,20 @@ button {
     display: flex;
     flex-wrap: wrap;
     font-size: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .tags  .tags__btn {
-    padding: 10px;
+    padding: 4px 10px 4px;
     font-size: 20px;
     border-radius: 10px;
-    
+    border: 1px solid #212121;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap
+}
+
+.active-btn {
+    background-color: rgb(83, 83, 241);
 }
