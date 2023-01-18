@@ -36,19 +36,16 @@ let selectedTagsSET = new Set() //++тут зберігаємо значення
 tagsContainerRef.addEventListener('click', onTagsContainerClick)
 
 function onTagsContainerClick(e) {
-    if(e.target.nodeName !== 'BUTTON') return
+    if(e.target.nodeName !== 'BUTTON') return //перевіряємо щоб клік був на кнопку
     
-    e.target.classList.toggle('active-btn')
-    
-
-    selectedTagsSET.add(e.target.dataset.value)
-
-    const activeCurrentBtn = document.querySelector('.active-btn')
-    if (activeCurrentBtn) {
-        selectedTagsSET.remove(e.target.dataset.value)
+    const isActiveBtn = e.target.classList.contains('active-btn')//перевіряємо чи є на кнопці клас
+    if (isActiveBtn) { //якщо true то зі змінної selectedTagsSET видалиться значення вибраної кнопки
+        selectedTagsSET.delete(e.target.dataset.value)
+    } else { //якщо false то добавиться
+        selectedTagsSET.add(e.target.dataset.value)
     }
     
-    console.log(selectedTagsSET)
+    e.target.classList.toggle('active-btn')
 
+    console.log(selectedTagsSET)
 }
-//ЗАКІНЧИВ НА SET ах
