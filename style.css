@@ -16,7 +16,6 @@ li {
 
 body {
     font-family: cursive, sans-serif;
-    background-color: brown;
 }
 
 button {
@@ -50,7 +49,7 @@ button {
     flex-wrap: wrap;
 }
 
-/* task 3 */
+/* task 3 ===TAGS===*/
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -71,4 +70,35 @@ button {
 
 .active-btn {
     background-color: rgb(83, 83, 241);
+}
+
+
+/* ===COLORPICKER=== */
+.pallete {
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 12px;
+    padding: 0;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.color-swatch {
+    height: 128px;
+    cursor: pointer;
+    
+}
+
+.color-card.is-active {
+    transform: perspective(400px) rotateX(10deg);
+}
+.color-meta {
+    padding: 10px;
+    font-weight: 700;
+}
+.color-meta p {
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: 0.1em;
 }

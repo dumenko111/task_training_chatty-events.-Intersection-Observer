@@ -13,3 +13,58 @@ const colors = [
   { hex: '#795548', rgb: '121,85,72' },
   { hex: '#607d8b', rgb: '96,125,139' },
 ]
+//майбутня розмітка - потім просто копіюю у ф-цію і рендерю
+/* <div class="color-card">
+      <div class="color-swatch" 
+      data-hex="#955014" 
+      data-rgb="149,80,20" 
+      style="background-color: #955014;"
+      ></div>
+      <div class="color-meta">
+        <p>HEX: #955014</p>
+        <p>RGB: 149,80,20</p>
+      </div>
+    </div> */
+
+const containerRef = document.querySelector('.js-pallete')
+const markupCards = createColorCardsMarkup(colors)//в цю змінну записуємо результат виклику ф-ції
+
+containerRef.insertAdjacentHTML('beforeend', markupCards )
+
+
+function createColorCardsMarkup(colors) {
+  return colors.map(({ hex, rgb }) => { //map робимо карточку для кожного об'єкту з масиву colors
+    return `
+  <div class="color-card">
+      <div 
+      class="color-swatch" 
+      data-hex="${hex}" 
+      data-rgb="${rgb}" 
+      style="background-color: ${hex};"
+      ></div>
+      <div class="color-meta">
+        <p>HEX: ${hex}</p>
+        <p>RGB: ${rgb}</p>
+      </div>
+  </div>`
+  })
+    .join('')
+}
+/////////робимо зміну бекграунду на боді по кліку на cards
+containerRef.addEventListener('click', onPalleteContainerClick)
+const selectedTagsSET = new Set()
+
+function onPalleteContainerClick(e) {
+  if(!e.target.classList.contains('color-swatch')) return
+  
+  const currentActiveCard = document.querySelector('.color-card.is-active')
+
+  if (currentActiveCard) {
+    currentActiveCard.classList.remove('is-active')
+  }
+
+  const parrentColorCard = e.target.closest('.color-card')//closest перевіряє чиє у предка клас
+  parrentColorCard.classList.add('is-active')
+
+    document.body.style.backgroundColor = e.target.dataset.hex
+}
