@@ -102,3 +102,24 @@ button {
     margin-bottom: 0;
     letter-spacing: 0.1em;
 }
+
+/* ===LAZY LOAD IMG=== */
+.feed {
+    list-style: none;
+}
+.feed li:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+.feed img {
+    transform: translate(-50%);
+    opacity: 0;
+    transition: all 900ms linear 500ms;
+    width: 640px;
+    height: 480px;
+    object-fit: cover;
+}
+.feed img.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
